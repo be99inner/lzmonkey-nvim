@@ -29,7 +29,9 @@ return require("packer").startup({
     -- ################################################
     use {
       "lewis6991/gitsigns.nvim",
-      config = function() require("plugins.tools.gitsigns") end
+      config = function()
+        require("plugins.tools.gitsigns")
+      end
     }
     use { "editorconfig/editorconfig-vim" } -- editorconfig
     use { "wakatime/vim-wakatime" } -- wakatime
@@ -39,7 +41,9 @@ return require("packer").startup({
     -- ################################################
     use {
       "themercorp/themer.lua",
-      config = function() require("plugins.ui.themer") end
+      config = function()
+        require("plugins.ui.themer")
+      end
     }
     -- indent line
     use {
@@ -56,24 +60,32 @@ return require("packer").startup({
     -- enrich search
     use {
       "kevinhwang91/nvim-hlslens",
-      config = function() require("hlslens").setup({}) end
+      config = function()
+        require("hlslens").setup({})
+      end
     }
     -- syntax highlight and etc.
     use {
       "nvim-treesitter/nvim-treesitter",
       run = "<cmd>TSUpdate",
-      config = function() require("plugins.ui.tree-sitter") end
+      config = function()
+        require("plugins.ui.tree-sitter")
+      end
     }
     -- status line
     use {
       "nvim-lualine/lualine.nvim",
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
-      config = function() require("lualine").setup() end
+      config = function()
+        require("plugins.ui.lualine")
+      end
     }
     -- icons
     use {
       "nvim-tree/nvim-web-devicons",
-      config = function() require("plugins.ui.nvim-web-devicons") end
+      config = function()
+        require("plugins.ui.nvim-web-devicons")
+      end
     }
 
     -- ################################################
@@ -82,7 +94,9 @@ return require("packer").startup({
     -- smart indent guess
     use {
       "nmac427/guess-indent.nvim",
-      config = function() require("plugins.motivation.guess-indent") end,
+      config = function()
+        require("plugins.motivation.guess-indent")
+      end,
       -- To comparasion about performance
       -- guess-indent vs indent-o-matic
       -- https://github.com/Darazaki/indent-o-matic/issues/12
@@ -100,12 +114,16 @@ return require("packer").startup({
     use {
       "kylechui/nvim-surround",
       tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-      config = function() require("nvim-surround").setup({}) end
+      config = function()
+        require("nvim-surround").setup({})
+      end
     }
     -- comment
     use {
       "terrortylor/nvim-comment",
-      config = function() require("plugins.motivation.nvim-comment") end
+      config = function()
+        require("plugins.motivation.nvim-comment")
+      end
     } -- some issue, can"t run config from packer
     use {
       "ethanholz/nvim-lastplace",
@@ -125,7 +143,9 @@ return require("packer").startup({
         { "themercorp/themer.lua" },
         { "nvim-tree/nvim-web-devicons" },
       },
-      config = function() require("plugins.motivation.telescope") end
+      config = function()
+        require("plugins.motivation.telescope")
+      end
     }
     -- file explorer
     use {
@@ -134,12 +154,16 @@ return require("packer").startup({
         "kyazdani42/nvim-web-devicons", -- optional, for file icons
       },
       tag = "nightly", -- optional, updated every week. (see issue #1193)
-      config = function() require("plugins.motivation.nvim-tree") end
+      config = function()
+        require("plugins.motivation.nvim-tree")
+      end
     }
     -- which keys
     use {
       "folke/which-key.nvim",
-      config = function() require("plugins.motivation.which-key") end
+      config = function()
+        require("plugins.motivation.which-key")
+      end
     }
 
     -- ################################################
@@ -148,7 +172,9 @@ return require("packer").startup({
     -- better whitespace
     use {
       "lewis6991/spaceless.nvim",
-      config = function() require("spaceless").setup() end
+      config = function()
+        require("spaceless").setup()
+      end
     }
     -- formatting with lsp -> null-ls
     use {
@@ -167,7 +193,9 @@ return require("packer").startup({
         { "williamboman/mason-lspconfig.nvim" },
         { "neovim/nvim-lspconfig" },
       },
-      config = function() require("plugins.completion.mason") end
+      config = function()
+        require("plugins.completion.mason")
+      end
     }
     -- completions
     use {
@@ -188,17 +216,15 @@ return require("packer").startup({
         { "L3MON4D3/LuaSnip" },
         { "rafamadriz/friendly-snippets" },
       },
-      config = function() require("plugins.completion.cmp") end
+      config = function()
+        require("plugins.completion.cmp")
+      end
     }
 
     -- automatically set up your configuration after cloning packer.nvim
     -- put this at the end after all plugins
     if packer_bootstrap then
       require("packer").sync()
-      -- else
-      --   vim.cmd ([[
-      --
-      --   ]])
     end
   end,
   -- float term when packer popup the updates
