@@ -78,7 +78,7 @@ cmp.setup({
     completeopt = "menu,menuone,noinsert,noselect",
   },
   experimental = {
-    ghost_text = true -- this feature conflict with copilot.vim's preview.
+    ghost_text = false -- this feature conflict with copilot.vim's preview.
   },
   formatting = {
     format = lspkind.cmp_format({
