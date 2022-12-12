@@ -110,9 +110,9 @@ return require("packer").startup({
     use {
       "ethanholz/nvim-lastplace",
       config = function()
-        require'nvim-lastplace'.setup {
-          lastplace_ignore_buftype = {"quickfix", "nofile", "help"},
-          lastplace_ignore_filetype = {"gitcommit", "gitrebase", "svn", "hgcommit"},
+        require 'nvim-lastplace'.setup {
+          lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
+          lastplace_ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit" },
           lastplace_open_folds = true
         }
       end
@@ -150,12 +150,22 @@ return require("packer").startup({
       "lewis6991/spaceless.nvim",
       config = function() require("spaceless").setup() end
     }
+    -- formatting with lsp -> null-ls
+    use {
+      "jose-elias-alvarez/null-ls.nvim",
+      requires = {
+        { "neovim/nvim-lspconfig" },
+      },
+      config = function()
+        require("plugins.completion.null-ls")
+      end
+    }
     -- LSP installer
     use {
       "williamboman/mason.nvim",
       requires = {
-        {"williamboman/mason-lspconfig.nvim"},
-        {"neovim/nvim-lspconfig"},
+        { "williamboman/mason-lspconfig.nvim" },
+        { "neovim/nvim-lspconfig" },
       },
       config = function() require("plugins.completion.mason") end
     }
@@ -185,10 +195,10 @@ return require("packer").startup({
     -- put this at the end after all plugins
     if packer_bootstrap then
       require("packer").sync()
-    -- else
-    --   vim.cmd ([[
-    --
-    --   ]])
+      -- else
+      --   vim.cmd ([[
+      --
+      --   ]])
     end
   end,
   -- float term when packer popup the updates
