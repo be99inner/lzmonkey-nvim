@@ -94,6 +94,13 @@ return require("packer").startup({
         require("plugins.ui.nvim-web-devicons")
       end
     }
+    -- smooth scrolling
+    use {
+      "declancm/cinnamon.nvim",
+      config = function()
+        require("plugins.ui.cinnamon")
+      end
+    }
 
     -- ################################################
     -- # MOTIVATION
