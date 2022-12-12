@@ -35,6 +35,13 @@ return require("packer").startup({
     }
     use { "editorconfig/editorconfig-vim" } -- editorconfig
     use { "wakatime/vim-wakatime" } -- wakatime
+    -- terminal
+    use {
+      "akinsho/toggleterm.nvim",
+      config = function()
+        require("toggleterm").setup()
+      end
+    }
 
     -- ################################################
     -- # UI
