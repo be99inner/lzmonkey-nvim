@@ -190,7 +190,7 @@ local lsp_flags = {
 -- list of LSP: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local servers = {
   "terraformls", "tflint",
-  "sumneko_lua","vimls", "bashls",
+  "sumneko_lua", "vimls", "bashls",
   "pyright",
   "eslint",
   "gopls",

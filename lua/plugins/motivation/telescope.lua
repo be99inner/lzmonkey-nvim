@@ -1,5 +1,4 @@
-local tc = require("telescope")
+local telescope = require("telescope")
 
-tc.load_extension("themes") -- load extension from themer
-
-tc.setup({})
+telescope.load_extension("themes") -- load extension from themer
+telescope.setup({})
