@@ -2,14 +2,13 @@ local wk = require("which-key")
 
 
 local mappings = {
-  {
-    f = {
-      name = "file",
-      b = { "<cmd>Telecsope buffers<cr>", "Find Buffer" },
-      e = { "<cmd>NvimTreeToggle<cr>", "Open/Close File Explore" },
-      f = { "<cmd>Telescope find_files<cr>", "Find File" },
-      g = { "<cmd>Telescope live_grep<cr>", "Search In Files" },
-    },
+  f = {
+    name = "+file",
+    b = { "<cmd>Telecsope buffers<cr>", "Find Buffer" },
+    e = { "<cmd>NvimTreeToggle<cr>", "Open/Close File Explorer" },
+    f = { "<cmd>Telescope find_files<cr>", "Find File" },
+    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    n = { "<cmd>enew<cr>", "New File" },
   },
   s = { "<cmd>nohlsearch<CR>", "No Search Hightlighting" },
   P = {
@@ -26,7 +25,7 @@ local opts = {
   mode = "n", -- NORMAL mode
   -- prefix: use "<leader>f" for example for mapping everything related to finding files
   -- the prefix is prepended to every mapping part of `mappings`
-  prefix = "",
+  prefix = "<leader>",
   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
   silent = true, -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
@@ -73,7 +72,7 @@ local setup = {
     scroll_up = '<c-u>', -- binding to scroll up inside the popup
   },
   window = {
-    border = "none", -- none, single, double, shadow
+    border = "rounded", -- none, single, double, shadow
     position = "bottom", -- bottom, top
     margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
     padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
@@ -90,7 +89,7 @@ local setup = {
   show_help = true, -- show help message on the command line when the popup is visible
   show_keys = true, -- show the currently pressed key and its label as a message in the command line
   triggers = "auto", -- automatically setup triggers
-  -- triggers = {"<leader>"} -- or specify a list manually
+  -- triggers = { "<leader>" }, -- or specify a list manually
   triggers_blacklist = {
     -- list of mode / prefixes that should never be hooked by WhichKey
     -- this is mostly relevant for key maps that start with a native binding

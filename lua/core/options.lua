@@ -1,7 +1,6 @@
 -- default option for nvim
 local g_options = {
-  -- mapleader = " ",                    -- set leader to SPACE
-  mapleader = "<space>"
+  mapleader = " ", -- set leader to SPACE
 }
 
 local options = {

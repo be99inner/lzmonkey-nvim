@@ -42,6 +42,17 @@ return require("packer").startup({
         require("toggleterm").setup()
       end
     }
+    -- tmux
+    use {
+      "alexghergh/nvim-tmux-navigation",
+      requires = {
+        { "tmux-plugins/vim-tmux-focus-events" },
+        { "tmux-plugins/vim-tmux" }
+      },
+      config = function()
+        require("plugins.tools.tmux")
+      end
+    }
 
     -- ################################################
     -- # UI

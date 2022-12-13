@@ -15,7 +15,7 @@ null_ls.setup({
       vim.cmd("nnoremap <silent><buffer> <Leader>f :lua vim.lsp.buf.formatting()<CR>")
 
       -- format on save
-      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
+      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({timeout = 3000})")
     end
 
     if client.server_capabilities.documentRangeFormattingProvider then

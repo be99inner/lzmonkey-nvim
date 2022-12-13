@@ -21,4 +21,3 @@ require("themer").setup({
     lualine = true,
   },
 })
-
