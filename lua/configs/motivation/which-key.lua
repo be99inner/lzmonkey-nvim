@@ -33,7 +33,7 @@ local mappings = {
     h = { "<cmd>:lua vim.lsp.buf.hover()<cr>", "Display Hover information" },
     i = { "<cmd>:lua vim.lsp.buf.implementation()<cr>", "Lists all the implementations" },
     r = { "<cmd>:lua vim.lsp.buf.references()<cr>", "Lists all the references" },
-    l = { "<cmd>:lua vim.lsp.buf.diagnostic.open_float()<cr>", "" },
+    l = { "<cmd>:lua vim.diagnostic.open_float()<cr>", "Show diagnostics in a floating window" },
     f = { "<cmd>:lua vim.lsp.buf.format({ async = true })<cr>", "Format current buffer" },
     a = { "<cmd>:lua vim.lsp.buf.code_action()<cr>", "Selects a code action available" },
     j = { "<cmd>:lua vim.diagnostic.goto_prev({buffer=0})<cr>", "Move to the previous diagnostic" },
