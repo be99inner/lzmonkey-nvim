@@ -3,7 +3,6 @@ require("nvim-treesitter.configs").setup {
   ensure_installed = {
     "lua", "vim", "bash", "markdown", "markdown_inline", "yaml", "json",
     "hcl", "go",
-    "org",
     "typescript", "javascript",
   },
   -- ensure_installed = "all",

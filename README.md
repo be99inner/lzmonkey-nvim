@@ -1,5 +1,9 @@
 # My Personal Configuration for Neovim
 
+Requires
+
+- Neovim version more than 0.8
+
 ## Features
 
 - UI configuration

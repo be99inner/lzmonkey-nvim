@@ -40,7 +40,7 @@ local options = {
   wrap = false, -- display lines as one long line
 
   timeoutlen = 1000, -- time to wait for a mapped sequence to complete (in milliseconds)
-  updatetime = 300, -- faster completion (4000ms default)
+  updatetime = 200, -- faster completion (4000ms default)
 
   splitbelow = true, -- force all horizontal splits to go below current window
   splitright = true, -- force all vertical splits to go to the right of current window

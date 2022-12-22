@@ -4,9 +4,10 @@ local wk = require("which-key")
 local mappings = {
   f = {
     name = "+file",
-    b = { "<cmd>Telecsope buffers<cr>", "Find Buffer" },
+    b = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
     e = { "<cmd>NvimTreeToggle<cr>", "Open/Close File Explorer" },
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
+    g = { "<cmd>Telescope live_grep<cr>", "Search In File" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     n = { "<cmd>enew<cr>", "New File" },
   },
@@ -19,6 +20,12 @@ local mappings = {
     S = { "<cmd>PackerStatus<cr>", "Status" },
     u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
+  T = {
+    name = "Terminal",
+    f = { "<cmd>ToggleTerm direction=float<cr>", "Float Terminal" },
+    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal Terminal" },
+    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical Terminal" },
+  }
 }
 
 local opts = {

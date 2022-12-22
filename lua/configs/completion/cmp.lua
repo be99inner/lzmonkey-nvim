@@ -60,7 +60,7 @@ lspkind.init({
 cmp.setup({
   -- preselect
   preselect = cmp.PreselectMode.None,
-  autorestart = true,
+  autorestart = false,
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
@@ -72,7 +72,7 @@ cmp.setup({
     -- documentation = cmp.config.window.bordered(),
   },
   view = {
-    entries = "native_menu",
+    entries = "custom",
   },
   comfirmation = {
     completeopt = "menu,menuone,noinsert,noselect",
@@ -81,16 +81,7 @@ cmp.setup({
     ghost_text = false -- this feature conflict with copilot.vim's preview.
   },
   formatting = {
-    format = lspkind.cmp_format({
-      mode = "symbol_text",
-      menu = ({
-        buffer = "[Buffer]",
-        nvim_lsp = "[LSP]",
-        luasnip = "[LuaSnip]",
-        nvim_lua = "[Lua]",
-        latex_symbols = "[Latex]",
-      })
-    }),
+    format = lspkind.cmp_format(), -- load configuration from lspkind
   },
   sources = cmp.config.sources({
     { name = "luasnip" }, -- For luasnip users.
@@ -194,10 +185,9 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-
   -- If LuaLSP
   if client.name ~= "sumneko_lua" then
-    settings = {
+    client.settings = {
       Lua = {
         runtime = {
           -- Tell the language server which version of Lua you"re using (most likely LuaJIT in the case of Neovim)

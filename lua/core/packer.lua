@@ -15,13 +15,28 @@ return require("packer").startup({
   function(use)
     -- manage packer by itself
     use "wbthomason/packer.nvim"
-    -- sppedup startup time of neovim
+    -- speedup startup time of neovim
     use {
       "lewis6991/impatient.nvim",
       config = function()
         local imp = require("impatient")
         imp.enable_profile()
       end
+    }
+    -- easier to setup filetype
+    use {
+      "nathom/filetype.nvim",
+      config = function()
+        require("filetype").setup {
+          overrides = {
+            extensions = {
+              tf = "terraform",
+              tfvars = "terraform",
+              tfstate = "json",
+            },
+          },
+        }
+      end,
     }
 
     -- ################################################
@@ -30,7 +45,7 @@ return require("packer").startup({
     use {
       "lewis6991/gitsigns.nvim",
       config = function()
-        require("plugins.tools.gitsigns")
+        require("configs.tools.gitsigns")
       end
     }
     use { "editorconfig/editorconfig-vim" } -- editorconfig
@@ -50,7 +65,7 @@ return require("packer").startup({
         { "tmux-plugins/vim-tmux" }
       },
       config = function()
-        require("plugins.tools.tmux")
+        require("configs.tools.tmux")
       end
     }
 
@@ -60,9 +75,15 @@ return require("packer").startup({
     use {
       "themercorp/themer.lua",
       config = function()
-        require("plugins.ui.themer")
+        require("configs.ui.themer")
       end
     }
+    -- use {
+    --   "RRethy/nvim-base16",
+    --   config = function()
+    --     vim.cmd "colorscheme base16-monokai"
+    --   end
+    -- }
     -- indent line
     use {
       "lukas-reineke/indent-blankline.nvim",
@@ -87,7 +108,7 @@ return require("packer").startup({
       "nvim-treesitter/nvim-treesitter",
       run = "<cmd>TSUpdate",
       config = function()
-        require("plugins.ui.tree-sitter")
+        require("configs.ui.tree-sitter")
       end
     }
     -- status line
@@ -95,21 +116,21 @@ return require("packer").startup({
       "nvim-lualine/lualine.nvim",
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
       config = function()
-        require("plugins.ui.lualine")
+        require("configs.ui.lualine")
       end
     }
     -- icons
     use {
       "nvim-tree/nvim-web-devicons",
       config = function()
-        require("plugins.ui.nvim-web-devicons")
+        require("configs.ui.nvim-web-devicons")
       end
     }
     -- smooth scrolling
     use {
       "declancm/cinnamon.nvim",
       config = function()
-        require("plugins.ui.cinnamon")
+        require("configs.ui.cinnamon")
       end
     }
 
@@ -120,7 +141,7 @@ return require("packer").startup({
     use {
       "nmac427/guess-indent.nvim",
       config = function()
-        require("plugins.motivation.guess-indent")
+        require("configs.motivation.guess-indent")
       end,
       -- To comparasion about performance
       -- guess-indent vs indent-o-matic
@@ -147,7 +168,7 @@ return require("packer").startup({
     use {
       "terrortylor/nvim-comment",
       config = function()
-        require("plugins.motivation.nvim-comment")
+        require("configs.motivation.nvim-comment")
       end
     } -- some issue, can"t run config from packer
     use {
@@ -169,7 +190,7 @@ return require("packer").startup({
         { "nvim-tree/nvim-web-devicons" },
       },
       config = function()
-        require("plugins.motivation.telescope")
+        require("configs.motivation.telescope")
       end
     }
     -- file explorer
@@ -180,14 +201,14 @@ return require("packer").startup({
       },
       tag = "nightly", -- optional, updated every week. (see issue #1193)
       config = function()
-        require("plugins.motivation.nvim-tree")
+        require("configs.motivation.nvim-tree")
       end
     }
     -- which keys
     use {
       "folke/which-key.nvim",
       config = function()
-        require("plugins.motivation.which-key")
+        require("configs.motivation.which-key")
       end
     }
 
@@ -208,7 +229,7 @@ return require("packer").startup({
         { "neovim/nvim-lspconfig" },
       },
       config = function()
-        require("plugins.completion.null-ls")
+        require("configs.completion.null-ls")
       end
     }
     -- LSP installer
@@ -219,7 +240,7 @@ return require("packer").startup({
         { "neovim/nvim-lspconfig" },
       },
       config = function()
-        require("plugins.completion.mason")
+        require("configs.completion.mason")
       end
     }
     -- completions
@@ -242,7 +263,7 @@ return require("packer").startup({
         { "rafamadriz/friendly-snippets" },
       },
       config = function()
-        require("plugins.completion.cmp")
+        require("configs.completion.cmp")
       end
     }
 
