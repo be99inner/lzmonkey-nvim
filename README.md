@@ -17,3 +17,10 @@ Requires
 mv ~/.config/nvim ~/.config/nvim_bak
 git clone git@github.com:be99inner/lzmonkey-nvim.git ~/.config/nvim
 ```
+
+## Inspiration
+
+Thank you for configuration examples.
+
+- [NvChad](https://github.com/NvChad/NvChad)
+- [LunarVim](https://github.com/LunarVim/LunarVim)

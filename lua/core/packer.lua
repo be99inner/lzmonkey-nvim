@@ -27,15 +27,7 @@ return require("packer").startup({
     use {
       "nathom/filetype.nvim",
       config = function()
-        require("filetype").setup {
-          overrides = {
-            extensions = {
-              tf = "terraform",
-              tfvars = "terraform",
-              tfstate = "json",
-            },
-          },
-        }
+        require("configs.utils.filetype")
       end,
     }
 
@@ -72,28 +64,23 @@ return require("packer").startup({
     -- ################################################
     -- # UI
     -- ################################################
-    use {
-      "themercorp/themer.lua",
-      config = function()
-        require("configs.ui.themer")
-      end
-    }
     -- use {
-    --   "RRethy/nvim-base16",
+    --   "themercorp/themer.lua",
     --   config = function()
-    --     vim.cmd "colorscheme base16-monokai"
+    --     require("configs.ui.themer")
     --   end
     -- }
+    use {
+      "marko-cerovac/material.nvim",
+      config = function()
+        require("configs.ui.material")
+      end
+    }
     -- indent line
     use {
       "lukas-reineke/indent-blankline.nvim",
       config = function()
-        require("indent_blankline").setup {
-          -- for example, context is off by default, use this to turn it on
-          show_current_context = true,
-          show_current_context_start = true,
-          space_char_blankline = " ",
-        }
+        require("configs.ui.indent-blankline")
       end
     }
     -- enrich search
@@ -174,11 +161,7 @@ return require("packer").startup({
     use {
       "ethanholz/nvim-lastplace",
       config = function()
-        require 'nvim-lastplace'.setup {
-          lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
-          lastplace_ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit" },
-          lastplace_open_folds = true
-        }
+        require("configs.motivation.nvim-lastplace")
       end
     }
     -- fuzzy search
