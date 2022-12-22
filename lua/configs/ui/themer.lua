@@ -1,8 +1,8 @@
 require("themer").setup({
   -- colorscheme = "amora",
-  colorscheme = "monokai_pro",
+  colorscheme = "darknight",
   dim_inactive = true,
-  term_colors = true,
+  term_colors = false,
   transparent = false,
   styles = {
     ["function"]    = { style = 'italic,bold' },

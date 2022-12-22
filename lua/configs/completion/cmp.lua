@@ -1,7 +1,4 @@
-local lspconfig = require("lspconfig");
-local luasnip = require("luasnip")
 local cmp = require("cmp")
-local lspkind = require("lspkind")
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -10,52 +7,6 @@ end
 
 -- loading snippets from luasnippet
 require("luasnip.loaders.from_vscode").lazy_load()
-
--- config icons display for cmp
-lspkind.init({
-  -- defines how annotations are shown
-  -- default: symbol
-  -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
-  mode = "symbol_text",
-
-  -- default symbol map
-  -- can be either 'default' (requires nerd-fonts font) or
-  -- 'codicons' for codicon preset (requires vscode-codicons font)
-  --
-  -- default: 'default'
-  preset = "default",
-
-  -- override preset symbols
-  --
-  -- default: {}
-  symbol_map = {
-    -- Text = "",
-    -- Method = "",
-    -- Function = "",
-    -- Constructor = "",
-    -- Field = "ﰠ",
-    -- Variable = "",
-    -- Class = "ﴯ",
-    -- Interface = "",
-    -- Module = "",
-    -- Property = "ﰠ",
-    -- Unit = "塞",
-    -- Value = "",
-    -- Enum = "",
-    -- Keyword = "",
-    -- Snippet = "",
-    -- Color = "",
-    -- File = "",
-    -- Reference = "",
-    -- Folder = "",
-    -- EnumMember = "",
-    -- Constant = "",
-    -- Struct = "פּ",
-    -- Event = "",
-    -- Operator = "",
-    -- TypeParameter = ""
-  },
-})
 
 cmp.setup({
   -- preselect
@@ -68,8 +19,8 @@ cmp.setup({
     end,
   },
   window = {
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
   view = {
     entries = "custom",
@@ -81,7 +32,7 @@ cmp.setup({
     ghost_text = false -- this feature conflict with copilot.vim's preview.
   },
   formatting = {
-    format = lspkind.cmp_format(), -- load configuration from lspkind
+    format = require("lspkind").cmp_format({})
   },
   sources = cmp.config.sources({
     { name = "luasnip" }, -- For luasnip users.
@@ -179,64 +130,5 @@ cmp.setup.cmdline(":", {
   }
 })
 
--- Setup lspconfig.
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  -- If LuaLSP
-  if client.name ~= "sumneko_lua" then
-    client.settings = {
-      Lua = {
-        runtime = {
-          -- Tell the language server which version of Lua you"re using (most likely LuaJIT in the case of Neovim)
-          version = "LuaJIT",
-        },
-        diagnostics = {
-          -- Get the language server to recognize the `vim` global
-          globals = { "vim" },
-        },
-        workspace = {
-          -- Make the server aware of Neovim runtime files
-          library = vim.api.nvim_get_runtime_file("", true),
-        },
-        -- Do not send telemetry data containing a randomized but unique identifier
-        telemetry = {
-          enable = false,
-        },
-      },
-    }
-  end
-
-  -- if client.name ~= "jsonls" then
-  --   client.resolved_capabilities.document_formatting = false
-  -- end
-  --
-  -- if client.name ~= "terraformls" then
-  --   client.resolved_capabilities.document_formatting = true
-  -- end
-end
-
-local lsp_flags = {
-  -- This is the default in Nvim 0.7+
-  debounce_text_changes = 150,
-}
-
--- list of LSP: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-local servers = {
-  "terraformls", "tflint",
-  "sumneko_lua", "vimls", "bashls",
-  "pyright",
-  "eslint",
-  "gopls",
-  "jsonls", "dockerls", "yamlls",
-}
-
-for _, server in ipairs(servers) do
-  lspconfig[server].setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-    flags = lsp_flags,
-  }
-end
+-- load configuration from lspconfig
+require("configs.completion.lsp.lspconfig")

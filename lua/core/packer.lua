@@ -64,18 +64,18 @@ return require("packer").startup({
     -- ################################################
     -- # UI
     -- ################################################
-    -- use {
-    --   "themercorp/themer.lua",
-    --   config = function()
-    --     require("configs.ui.themer")
-    --   end
-    -- }
     use {
-      "marko-cerovac/material.nvim",
+      "themercorp/themer.lua",
       config = function()
-        require("configs.ui.material")
+        require("configs.ui.themer")
       end
     }
+    -- use {
+    --   "marko-cerovac/material.nvim",
+    --   config = function()
+    --     require("configs.ui.material")
+    --   end
+    -- }
     -- indent line
     use {
       "lukas-reineke/indent-blankline.nvim",
