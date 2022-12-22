@@ -106,6 +106,17 @@ return require("packer").startup({
         require("configs.ui.lualine")
       end
     }
+    -- tabline
+    use {
+      "akinsho/bufferline.nvim",
+      tag = "v3.*",
+      requires = {
+        "nvim-tree/nvim-web-devicons"
+      },
+      config = function()
+        require("bufferline").setup({})
+      end
+    }
     -- icons
     use {
       "nvim-tree/nvim-web-devicons",
