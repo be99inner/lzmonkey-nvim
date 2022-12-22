@@ -1,10 +1,10 @@
 local wk = require("which-key")
 
-
 local mappings = {
   f = {
     name = "+file",
     b = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
+    c = { "<cmd>Telescope commands<cr>", "Find command" },
     e = { "<cmd>NvimTreeToggle<cr>", "Open/Close File Explorer" },
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
     g = { "<cmd>Telescope live_grep<cr>", "Search In File" },
@@ -25,6 +25,22 @@ local mappings = {
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float Terminal" },
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal Terminal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical Terminal" },
+  },
+  l = {
+    name = "LSP",
+    D = { "<cmd>:lua vim.lsp.buf.declaration()<cr>", "Go to declaration" },
+    d = { "<cmd>:lua vim.lsp.buf.definition()<cr>", "Go to definition" },
+    h = { "<cmd>:lua vim.lsp.buf.hover()<cr>", "Display Hover information" },
+    i = { "<cmd>:lua vim.lsp.buf.implementation()<cr>", "Lists all the implementations" },
+    r = { "<cmd>:lua vim.lsp.buf.references()<cr>", "Lists all the references" },
+    l = { "<cmd>:lua vim.lsp.buf.diagnostic.open_float()<cr>", "" },
+    f = { "<cmd>:lua vim.lsp.buf.format({ async = true })<cr>", "Format current buffer" },
+    a = { "<cmd>:lua vim.lsp.buf.code_action()<cr>", "Selects a code action available" },
+    j = { "<cmd>:lua vim.diagnostic.goto_prev({buffer=0})<cr>", "Move to the previous diagnostic" },
+    k = { "<cmd>:lua vim.diagnostic.goto_next({buffer=0})<cr>", "Move to the next diagnostic" },
+    R = { "<cmd>:lua vim.lsp.buf.rename()<cr>", "Rename all references" },
+    s = { "<cmd>:lua vim.lsp.buf.signature_help()<cr>", "Displays signature information" },
+    q = { "<cmd>:lua vim.diagnostic.setloclist()<cr>", "Add buffer diagnostics to the location list" },
   }
 }
 
