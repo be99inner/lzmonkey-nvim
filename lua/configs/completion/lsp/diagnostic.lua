@@ -16,9 +16,10 @@ vim.diagnostic.config({
     border = 'rounded',
     focusable = true,
   },
-  update_in_insert = true, -- default to false
+  update_in_insert = false, -- default to false
   severity_sort = true, -- default to false
 })
 
 -- auto popup diagnostic message when cursor is hover the line
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+-- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus=false})]]
