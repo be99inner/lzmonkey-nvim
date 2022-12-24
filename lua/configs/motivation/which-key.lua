@@ -11,6 +11,7 @@ local mappings = {
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     n = { "<cmd>enew<cr>", "New File" },
   },
+  g = { "<cmd>:lua require('configs.tools.term.lazygit').lazygit_toggle()<cr>", "Open/Close LazyGit" },
   s = { "<cmd>nohlsearch<CR>", "No Search Hightlighting" },
   P = {
     name = "Packer",
@@ -20,11 +21,12 @@ local mappings = {
     S = { "<cmd>PackerStatus<cr>", "Status" },
     u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
-  T = {
+  t = {
     name = "Terminal",
-    f = { "<cmd>ToggleTerm direction=float<cr>", "Float Terminal" },
-    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal Terminal" },
-    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical Terminal" },
+    f = { "<cmd>ToggleTerm direction=float<cr>", "Open Float Terminal" },
+    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Open Horizontal Terminal" },
+    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Open Vertical Terminal" },
+    t = { "<cmd>ToggleTerm size=80 direction=tab<cr>", "Open Terminal in tab" },
   },
   l = {
     name = "LSP",
@@ -41,7 +43,7 @@ local mappings = {
     R = { "<cmd>:lua vim.lsp.buf.rename()<cr>", "Rename all references" },
     s = { "<cmd>:lua vim.lsp.buf.signature_help()<cr>", "Displays signature information" },
     q = { "<cmd>:lua vim.diagnostic.setloclist()<cr>", "Add buffer diagnostics to the location list" },
-  }
+  },
 }
 
 local opts = {
@@ -91,15 +93,15 @@ local setup = {
     group = "+", -- symbol prepended to a group
   },
   popup_mappings = {
-    scroll_down = '<c-d>', -- binding to scroll down inside the popup
-    scroll_up = '<c-u>', -- binding to scroll up inside the popup
+    scroll_down = "<c-d>", -- binding to scroll down inside the popup
+    scroll_up = "<c-u>", -- binding to scroll up inside the popup
   },
   window = {
     border = "rounded", -- none, single, double, shadow
     position = "bottom", -- bottom, top
     margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
     padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-    winblend = 0
+    winblend = 0,
   },
   layout = {
     height = { min = 4, max = 25 }, -- min and max height of the columns

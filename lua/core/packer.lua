@@ -3,7 +3,7 @@ local ensure_packer = function()
   local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
   if fn.empty(fn.glob(install_path)) > 0 then
     fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-    vim.cmd [[packadd packer.nvim]]
+    vim.cmd([[packadd packer.nvim]])
     return true
   end
   return false
@@ -14,129 +14,124 @@ local packer_bootstrap = ensure_packer()
 return require("packer").startup({
   function(use)
     -- manage packer by itself
-    use "wbthomason/packer.nvim"
+    use("wbthomason/packer.nvim")
     -- speedup startup time of neovim
-    use {
+    use({
       "lewis6991/impatient.nvim",
       config = function()
         local imp = require("impatient")
         imp.enable_profile()
-      end
-    }
+      end,
+    })
     -- easier to setup filetype
-    use {
+    use({
       "nathom/filetype.nvim",
       config = function()
         require("configs.utils.filetype")
       end,
-    }
+    })
 
     -- ################################################
     -- # Tools
     -- ################################################
-    use {
+    -- git
+    use({
       "lewis6991/gitsigns.nvim",
       config = function()
         require("configs.tools.gitsigns")
-      end
-    }
-    use { "editorconfig/editorconfig-vim" } -- editorconfig
-    use { "wakatime/vim-wakatime" } -- wakatime
+      end,
+    })
+    use({ "editorconfig/editorconfig-vim" }) -- editorconfig
+    use({ "wakatime/vim-wakatime" }) -- wakatime
     -- terminal
-    use {
+    use({
       "akinsho/toggleterm.nvim",
       config = function()
-        require("toggleterm").setup()
-      end
-    }
+        require("configs.tools.toggleterm")
+      end,
+    })
     -- tmux
-    use {
+    use({
       "alexghergh/nvim-tmux-navigation",
       requires = {
         { "tmux-plugins/vim-tmux-focus-events" },
-        { "tmux-plugins/vim-tmux" }
+        { "tmux-plugins/vim-tmux" },
       },
       config = function()
         require("configs.tools.tmux")
-      end
-    }
+      end,
+    })
 
     -- ################################################
     -- # UI
     -- ################################################
-    use {
+    use({
       "themercorp/themer.lua",
       config = function()
         require("configs.ui.themer")
-      end
-    }
-    -- use {
-    --   "marko-cerovac/material.nvim",
-    --   config = function()
-    --     require("configs.ui.material")
-    --   end
-    -- }
+      end,
+    })
     -- indent line
-    use {
+    use({
       "lukas-reineke/indent-blankline.nvim",
       config = function()
         require("configs.ui.indent-blankline")
-      end
-    }
+      end,
+    })
     -- enrich search
-    use {
+    use({
       "kevinhwang91/nvim-hlslens",
       config = function()
         require("hlslens").setup({})
-      end
-    }
+      end,
+    })
     -- syntax highlight and etc.
-    use {
+    use({
       "nvim-treesitter/nvim-treesitter",
       run = "<cmd>TSUpdate",
       config = function()
         require("configs.ui.tree-sitter")
-      end
-    }
+      end,
+    })
     -- status line
-    use {
+    use({
       "nvim-lualine/lualine.nvim",
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
       config = function()
         require("configs.ui.lualine")
-      end
-    }
+      end,
+    })
     -- tabline
-    use {
+    use({
       "akinsho/bufferline.nvim",
       tag = "v3.*",
       requires = {
-        "nvim-tree/nvim-web-devicons"
+        "nvim-tree/nvim-web-devicons",
       },
       config = function()
         require("bufferline").setup({})
-      end
-    }
+      end,
+    })
     -- icons
-    use {
+    use({
       "nvim-tree/nvim-web-devicons",
       config = function()
         require("configs.ui.nvim-web-devicons")
-      end
-    }
+      end,
+    })
     -- smooth scrolling
-    use {
+    use({
       "declancm/cinnamon.nvim",
       config = function()
         require("configs.ui.cinnamon")
-      end
-    }
+      end,
+    })
 
     -- ################################################
     -- # MOTIVATION
     -- ################################################
     -- smart indent guess
-    use {
+    use({
       "nmac427/guess-indent.nvim",
       config = function()
         require("configs.motivation.guess-indent")
@@ -144,39 +139,39 @@ return require("packer").startup({
       -- To comparasion about performance
       -- guess-indent vs indent-o-matic
       -- https://github.com/Darazaki/indent-o-matic/issues/12
-    }
+    })
     -- auto match bracket and closer
-    use {
+    use({
       "windwp/nvim-autopairs",
       config = function()
         require("nvim-autopairs").setup({
           disable_filetype = { "TelescopePrompt", "vim" },
         })
-      end
-    }
+      end,
+    })
     -- fast surround word
-    use {
+    use({
       "kylechui/nvim-surround",
       tag = "*", -- Use for stability; omit to use `main` branch for the latest features
       config = function()
         require("nvim-surround").setup({})
-      end
-    }
+      end,
+    })
     -- comment
-    use {
+    use({
       "terrortylor/nvim-comment",
       config = function()
         require("configs.motivation.nvim-comment")
-      end
-    } -- some issue, can"t run config from packer
-    use {
+      end,
+    }) -- some issue, can"t run config from packer
+    use({
       "ethanholz/nvim-lastplace",
       config = function()
         require("configs.motivation.nvim-lastplace")
-      end
-    }
+      end,
+    })
     -- fuzzy search
-    use {
+    use({
       "nvim-telescope/telescope.nvim",
       requires = {
         { "nvim-lua/plenary.nvim" },
@@ -185,10 +180,10 @@ return require("packer").startup({
       },
       config = function()
         require("configs.motivation.telescope")
-      end
-    }
+      end,
+    })
     -- file explorer
-    use {
+    use({
       "kyazdani42/nvim-tree.lua",
       requires = {
         "kyazdani42/nvim-web-devicons", -- optional, for file icons
@@ -196,38 +191,38 @@ return require("packer").startup({
       tag = "nightly", -- optional, updated every week. (see issue #1193)
       config = function()
         require("configs.motivation.nvim-tree")
-      end
-    }
+      end,
+    })
     -- which keys
-    use {
+    use({
       "folke/which-key.nvim",
       config = function()
         require("configs.motivation.which-key")
-      end
-    }
+      end,
+    })
 
     -- ################################################
     -- # Completions & Linters
     -- ################################################
     -- better whitespace
-    use {
+    use({
       "lewis6991/spaceless.nvim",
       config = function()
         require("spaceless").setup()
-      end
-    }
+      end,
+    })
     -- formatting with lsp -> null-ls
-    use {
+    use({
       "jose-elias-alvarez/null-ls.nvim",
       requires = {
         { "neovim/nvim-lspconfig" },
       },
       config = function()
         require("configs.completion.null-ls")
-      end
-    }
+      end,
+    })
     -- LSP installer
-    use {
+    use({
       "williamboman/mason.nvim",
       requires = {
         { "williamboman/mason-lspconfig.nvim" },
@@ -235,10 +230,10 @@ return require("packer").startup({
       },
       config = function()
         require("configs.completion.mason")
-      end
-    }
+      end,
+    })
     -- completions
-    use {
+    use({
       "hrsh7th/nvim-cmp",
       requires = {
         -- generic
@@ -258,8 +253,8 @@ return require("packer").startup({
       },
       config = function()
         require("configs.completion.cmp")
-      end
-    }
+      end,
+    })
 
     -- automatically set up your configuration after cloning packer.nvim
     -- put this at the end after all plugins
@@ -271,8 +266,8 @@ return require("packer").startup({
   config = {
     display = {
       open_fn = function()
-        return require('packer.util').float({ border = 'rounded' })
-      end
-    }
-  }
+        return require("packer.util").float({ border = "rounded" })
+      end,
+    },
+  },
 })
