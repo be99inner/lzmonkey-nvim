@@ -30,10 +30,10 @@ cmp.setup({
     completeopt = "menu,menuone,noinsert,noselect",
   },
   experimental = {
-    ghost_text = false -- this feature conflict with copilot.vim's preview.
+    ghost_text = false, -- this feature conflict with copilot.vim's preview.
   },
   formatting = {
-    format = require("lspkind").cmp_format({})
+    format = require("lspkind").cmp_format({}),
   },
   sources = cmp.config.sources({
     { name = "luasnip" }, -- For luasnip users.
@@ -51,14 +51,14 @@ cmp.setup({
     ["<C-e>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping.confirm({
       select = false,
-      behavior = cmp.ConfirmBehavior.Replace
+      behavior = cmp.ConfirmBehavior.Replace,
     }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ['<C-l>'] = cmp.mapping(function(fallback)
+    ["<C-l>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         return cmp.complete_common_string()
       end
       fallback()
-    end, { 'i', 'c' }),
+    end, { "i", "c" }),
     -- Use Tab for select completion a snippet
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -104,31 +104,31 @@ cmp.setup.filetype("gitcommit", {
     { name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
   }, {
     { name = "buffer" },
-  })
+  }),
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won"t work anymore).
 cmp.setup.cmdline("/", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
-    { name = "buffer" }
+    { name = "buffer" },
   },
   view = {
-    entries = { name = "wildmenu", separator = " | " }
-  }
+    entries = { name = "wildmenu", separator = " | " },
+  },
 })
 
 -- Use cmdline & path source for ":" (if you enabled `native_menu`, this won"t work anymore).
 cmp.setup.cmdline(":", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = "path" }
+    { name = "path" },
   }, {
-    { name = "cmdline" }
+    { name = "cmdline" },
   }),
   view = {
-    entries = { name = "wildmenu", separator = " | " }
-  }
+    entries = { name = "wildmenu", separator = " | " },
+  },
 })
 
 -- load configuration from lspconfig

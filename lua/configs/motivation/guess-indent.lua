@@ -1,4 +1,4 @@
-require("guess-indent").setup {
+require("guess-indent").setup({
   auto_cmd = true, -- Set to false to disable automatic execution
   filetype_exclude = { -- A list of filetypes for which the auto command gets disabled
     "netrw",
@@ -10,4 +10,4 @@ require("guess-indent").setup {
     "terminal",
     "prompt",
   },
-}
+})

@@ -1,19 +1,24 @@
-local lspconfig = require("lspconfig");
+local lspconfig = require("lspconfig")
 
 -- ui border
-require('lspconfig.ui.windows').default_options.border = "rounded"
+require("lspconfig.ui.windows").default_options.border = "rounded"
 
 -- Setup lspconfig.
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- list of LSP: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local servers = {
-  "terraformls", "tflint",
-  "sumneko_lua", "vimls", "bashls",
+  "terraformls",
+  "tflint",
+  "sumneko_lua",
+  "vimls",
+  "bashls",
   "pyright",
   "tsserver",
   "gopls",
-  "jsonls", "dockerls", "yamlls",
+  "jsonls",
+  "dockerls",
+  "yamlls",
 }
 
 -- Use an on_attach function to only map the following keys
@@ -58,9 +63,9 @@ local lsp_flags = {
 }
 
 for _, server in ipairs(servers) do
-  lspconfig[server].setup {
+  lspconfig[server].setup({
     capabilities = capabilities,
     on_attach = on_attach,
     flags = lsp_flags,
-  }
+  })
 end

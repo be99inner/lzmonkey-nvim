@@ -12,8 +12,8 @@ vim.diagnostic.config({
   virtual_text = false,
   float = {
     show_header = true,
-    source = 'always',
-    border = 'rounded',
+    source = "always",
+    border = "rounded",
     focusable = true,
   },
   update_in_insert = false, -- default to false
@@ -22,4 +22,4 @@ vim.diagnostic.config({
 
 -- auto popup diagnostic message when cursor is hover the line
 -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
-vim.cmd [[autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus=false})]]
+vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus=false})]])

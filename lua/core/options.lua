@@ -56,4 +56,4 @@ for k, v in pairs(options) do
 end
 
 -- wild ignore
-vim.opt.wildignore:append { "*/tmp/*", "*.so", "*.swp", "*.zip", "*.pyc", "*./.terraform/*", ".git" }
+vim.opt.wildignore:append({ "*/tmp/*", "*.so", "*.swp", "*.zip", "*.pyc", "*./.terraform/*", ".git" })

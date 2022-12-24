@@ -5,11 +5,11 @@ require("themer").setup({
   term_colors = false,
   transparent = false,
   styles = {
-    ["function"]    = { style = 'italic,bold' },
-    functionbuiltin = { style = 'italic,bold' },
-    variable        = { style = 'italic' },
-    variableBuiltIn = { style = 'italic' },
-    parameter       = { style = 'italic' },
+    ["function"] = { style = "italic,bold" },
+    functionbuiltin = { style = "italic,bold" },
+    variable = { style = "italic" },
+    variableBuiltIn = { style = "italic" },
+    parameter = { style = "italic" },
   },
   plugins = {
     treesitter = true,

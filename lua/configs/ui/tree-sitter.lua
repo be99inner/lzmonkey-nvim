@@ -1,9 +1,17 @@
-require("nvim-treesitter.configs").setup {
+require("nvim-treesitter.configs").setup({
   -- A list of parser names, or "all"
   ensure_installed = {
-    "lua", "vim", "bash", "markdown", "markdown_inline", "yaml", "json",
-    "hcl", "go",
-    "typescript", "javascript",
+    "lua",
+    "vim",
+    "bash",
+    "markdown",
+    "markdown_inline",
+    "yaml",
+    "json",
+    "hcl",
+    "go",
+    "typescript",
+    "javascript",
   },
   -- ensure_installed = "all",
 
@@ -34,5 +42,5 @@ require("nvim-treesitter.configs").setup {
   },
   indent = {
     enable = true,
-  }
-}
+  },
+})
