@@ -255,6 +255,14 @@ return require("packer").startup({
         require("configs.completion.cmp")
       end,
     })
+    -- flutter
+    use({
+      "akinsho/flutter-tools.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = function()
+        require("configs.completion.lsp.flutter-tools")
+      end,
+    })
 
     -- automatically set up your configuration after cloning packer.nvim
     -- put this at the end after all plugins

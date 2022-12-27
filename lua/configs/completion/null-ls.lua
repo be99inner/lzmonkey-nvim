@@ -9,6 +9,7 @@ local sources = {
   null_ls.builtins.formatting.prettier, -- need to figure out how to config with prettier
   null_ls.builtins.formatting.terraform_fmt,
   null_ls.builtins.formatting.eslint,
+  null_ls.builtins.formatting.dart_format,
 }
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
