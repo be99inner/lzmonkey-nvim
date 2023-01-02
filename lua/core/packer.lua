@@ -88,7 +88,7 @@ return require("packer").startup({
     -- syntax highlight and etc.
     use({
       "nvim-treesitter/nvim-treesitter",
-      run = "<cmd>TSUpdate",
+      run = ":TSUpdateSync",
       config = function()
         require("configs.ui.tree-sitter")
       end,
