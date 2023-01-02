@@ -8,50 +8,61 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- list of LSP: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local servers = {
-	"terraformls",
-	"tflint",
-	"sumneko_lua",
-	"vimls",
-	"bashls",
-	"pyright",
-	"tsserver",
-	"gopls",
-	"jsonls",
-	"dockerls",
-	"yamlls",
+  -- vim
+  "sumneko_lua",
+  "vimls",
+  -- terraform
+  "terraformls",
+  "tflint",
+  -- bash
+  "bashls",
+  -- python
+  "pyright",
+  -- javascript
+  "tsserver",
+  -- golang
+  "gopls",
+  -- json
+  "jsonls",
+  -- docker
+  "dockerls",
+  -- yaml
+  "yamlls",
+  -- markdown
+  "marksman",
 }
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-	-- If LuaLSP
-	if client.name ~= "sumneko_lua" then
-		client.settings = {
-			Lua = {
-				runtime = {
-					-- Tell the language server which version of Lua you"re using (most likely LuaJIT in the case of Neovim)
-					version = "LuaJIT",
-				},
-				diagnostics = {
-					-- Get the language server to recognize the `vim` global
-					globals = { "vim" },
-				},
-				workspace = {
-					-- Make the server aware of Neovim runtime files
-					library = vim.api.nvim_get_runtime_file("", true),
-				},
-				-- Do not send telemetry data containing a randomized but unique identifier
-				telemetry = {
-					enable = false,
-				},
-			},
-		}
-	end
+  -- If LuaLSP
+  if client.name ~= "sumneko_lua" then
+    client.settings = {
+      Lua = {
+        runtime = {
+          -- Tell the language server which version of Lua you"re using (most likely LuaJIT in the case of Neovim)
+          version = "LuaJIT",
+        },
+        diagnostics = {
+          -- Get the language server to recognize the `vim` global
+          globals = { "vim" },
+        },
+        workspace = {
+          -- Make the server aware of Neovim runtime files
+          library = vim.api.nvim_get_runtime_file("", true),
+        },
+        -- Do not send telemetry data containing a randomized but unique identifier
+        telemetry = {
+          enable = false,
+        },
+      },
+    }
+  end
 end
 
 for _, server in ipairs(servers) do
-	lspconfig[server].setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-	})
+  lspconfig[server].setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+  })
 end
