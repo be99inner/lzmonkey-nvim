@@ -12,7 +12,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 cmp.setup({
   -- preselect
   preselect = cmp.PreselectMode.None,
-  autorestart = false,
+  autorestart = true,
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
