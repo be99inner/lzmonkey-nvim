@@ -4,13 +4,13 @@ require("themer").setup({
   dim_inactive = true,
   term_colors = false,
   transparent = false,
-  styles = {
-    ["function"] = { style = "italic,bold" },
-    functionbuiltin = { style = "italic,bold" },
-    variable = { style = "italic" },
-    variableBuiltIn = { style = "italic" },
-    parameter = { style = "italic" },
-  },
+  -- styles = {
+  --   ["function"] = { style = "italic,bold" },
+  --   functionbuiltin = { style = "italic,bold" },
+  --   variable = { style = "italic" },
+  --   variableBuiltIn = { style = "italic" },
+  --   parameter = { style = "italic" },
+  -- },
   plugins = {
     treesitter = true,
     cmp = true,
