@@ -1,6 +1,6 @@
 require("themer").setup({
   -- colorscheme = "amora",
-  colorscheme = "darknight",
+  colorscheme = "monokai_pro",
   dim_inactive = true,
   term_colors = false,
   transparent = false,
