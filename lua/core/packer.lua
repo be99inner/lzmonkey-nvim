@@ -90,7 +90,7 @@ return require("packer").startup({
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
       config = function()
-        require("configs.ui.tree-sitter")
+        require("configs.ui.nvim-treesitter")
       end,
     })
     -- status line
