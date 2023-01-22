@@ -41,7 +41,7 @@ return require("packer").startup({
         require("configs.tools.gitsigns")
       end,
     })
-    use({ "editorconfig/editorconfig-vim" }) -- editorconfig
+    use({ "gpanders/editorconfig.nvim" }) -- editorconfig
     use({ "wakatime/vim-wakatime" }) -- wakatime
     -- terminal
     use({
@@ -131,15 +131,15 @@ return require("packer").startup({
     -- # MOTIVATION
     -- ################################################
     -- smart indent guess
-    -- use({
-    --   "nmac427/guess-indent.nvim",
-    --   config = function()
-    --     require("configs.motivation.guess-indent")
-    --   end,
-    --   -- To comparasion about performance
-    --   -- guess-indent vs indent-o-matic
-    --   -- https://github.com/Darazaki/indent-o-matic/issues/12
-    -- })
+    use({
+      "nmac427/guess-indent.nvim",
+      config = function()
+        require("configs.motivation.guess-indent")
+      end,
+      -- To comparasion about performance
+      -- guess-indent vs indent-o-matic
+      -- https://github.com/Darazaki/indent-o-matic/issues/12
+    })
     -- auto match bracket and closer
     use({
       "windwp/nvim-autopairs",
