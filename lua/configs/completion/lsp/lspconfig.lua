@@ -1,5 +1,8 @@
 local lspconfig = require("lspconfig")
 
+-- set log lv
+vim.lsp.set_log_level("debug")
+
 -- ui border
 require("lspconfig.ui.windows").default_options.border = "rounded"
 
