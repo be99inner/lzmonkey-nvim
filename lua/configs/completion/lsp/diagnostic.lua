@@ -23,3 +23,6 @@ vim.diagnostic.config({
 -- auto popup diagnostic message when cursor is hover the line
 -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float(nil, {focus=false})]])
+
+-- reddit thread for floating window
+-- https://www.reddit.com/r/neovim/comments/mq2nyw/floating_window_can_have_borders_now_on_neovim/
