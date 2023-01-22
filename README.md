@@ -1,6 +1,6 @@
 # My Personal Configuration for Neovim
 
-Requires
+## Requirement
 
 - Neovim version more than 0.8
 
