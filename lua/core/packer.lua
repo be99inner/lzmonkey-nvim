@@ -157,6 +157,10 @@ return require("packer").startup({
         require("nvim-surround").setup({})
       end,
     })
+    -- multi-cursor
+    use({
+      "mg979/vim-visual-multi",
+    })
     -- comment
     use({
       "terrortylor/nvim-comment",
