@@ -1,5 +1,5 @@
 require("themer").setup({
-  colorscheme = "gruvbox",
+  colorscheme = "monokai_pro",
   dim_inactive = true,
   term_colors = false,
   transparent = false,
