@@ -12,7 +12,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- list of LSP: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local servers = {
   -- vim
-  "sumneko_lua",
+  "lua_ls",
   "vimls",
   -- terraform
   "terraformls",
@@ -39,7 +39,7 @@ local servers = {
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   -- If LuaLSP
-  if client.name ~= "sumneko_lua" then
+  if client.name ~= "lua_ls" then
     client.settings = {
       Lua = {
         runtime = {
