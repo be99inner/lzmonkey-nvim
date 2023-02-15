@@ -4,6 +4,7 @@ require("filetype").setup({
       tf = "terraform",
       tfvars = "terraform",
       tfstate = "json",
+      sh = "sh",
     },
   },
 })
