@@ -1,7 +1,7 @@
 local lspconfig = require("lspconfig")
 
 -- set log lv
-vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("info")
 
 -- ui border
 require("lspconfig.ui.windows").default_options.border = "rounded"
@@ -38,6 +38,20 @@ local servers = {
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  if client.supports_method("textDocument/formatting") then
+    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+    -- Auto format on saving
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+        vim.lsp.buf.format({ timeout = 3000 })
+      end,
+    })
+  end
+
   -- If LuaLSP
   if client.name ~= "lua_ls" then
     client.settings = {
