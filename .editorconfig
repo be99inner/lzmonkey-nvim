@@ -17,7 +17,3 @@ indent_size = 2
 [*.cmake]
 indent_style = space
 indent_size = 4
-
-[*.{lua.in,lua}]
-indent_style = space
-indent_size = 2
