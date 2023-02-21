@@ -6,6 +6,7 @@ local sources = {
 
   -- Code Formatting
   null_ls.builtins.formatting.prettier, -- need to figure out how to config with prettier
+  null_ls.builtins.formatting.terraform_fmt,
 }
 
 null_ls.setup({
