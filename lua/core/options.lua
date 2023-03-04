@@ -13,9 +13,9 @@ local options = {
 
   showtabline = 2, -- always show tabs
 
-  tabstop = 4, -- default tabstop
-  softtabstop = 4,
-  shiftwidth = 4,
+  tabstop = 2, -- default tabstop
+  softtabstop = 2,
+  shiftwidth = 2,
   shiftround = true,
   expandtab = true,
   smartindent = true,
