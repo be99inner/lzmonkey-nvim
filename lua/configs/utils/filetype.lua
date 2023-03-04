@@ -6,5 +6,8 @@ require("filetype").setup({
       tfstate = "json",
       sh = "sh",
     },
+    complex = {
+      ["/%.kube/config"] = "yaml"
+    }
   },
 })
