@@ -13,6 +13,9 @@ local packer_bootstrap = ensure_packer()
 
 return require("packer").startup({
   function(use)
+    -- ################################################
+    -- # Generic
+    -- ################################################
     -- manage packer by itself
     use("wbthomason/packer.nvim")
     -- speedup startup time of neovim
@@ -34,23 +37,25 @@ return require("packer").startup({
     -- ################################################
     -- # Tools
     -- ################################################
-    -- git
+    -- integrate git changes with GitSign
     use({
       "lewis6991/gitsigns.nvim",
       config = function()
         require("configs.tools.gitsigns")
       end,
     })
-    use({ "gpanders/editorconfig.nvim" }) -- editorconfig
-    use({ "wakatime/vim-wakatime" }) -- wakatime
-    -- terminal
+    -- Cross editor configuration with editorconfig
+    use({ "gpanders/editorconfig.nvim" })
+    -- Time tracking with code with wakatime
+    use({ "wakatime/vim-wakatime" })
+    -- Terminal integration
     use({
       "akinsho/toggleterm.nvim",
       config = function()
         require("configs.tools.toggleterm")
       end,
     })
-    -- tmux
+    -- Integrate with tmux
     use({
       "alexghergh/nvim-tmux-navigation",
       requires = {
@@ -65,27 +70,28 @@ return require("packer").startup({
     -- ################################################
     -- # UI
     -- ################################################
+    -- Control colorscheme with Themer
     use({
       "themercorp/themer.lua",
       config = function()
         require("configs.ui.themer")
       end,
     })
-    -- indent line
+    -- Better indent line and trim whitespace EOL
     use({
       "lukas-reineke/indent-blankline.nvim",
       config = function()
         require("configs.ui.indent-blankline")
       end,
     })
-    -- enrich search
+    -- Enrich search for neovim
     use({
       "kevinhwang91/nvim-hlslens",
       config = function()
         require("hlslens").setup({})
       end,
     })
-    -- syntax highlight and etc.
+    -- Syntax highlight and etc.
     use({
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
@@ -93,7 +99,7 @@ return require("packer").startup({
         require("configs.ui.nvim-treesitter")
       end,
     })
-    -- status line
+    -- Status line of Neovim
     use({
       "nvim-lualine/lualine.nvim",
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
@@ -112,14 +118,14 @@ return require("packer").startup({
         require("bufferline").setup({})
       end,
     })
-    -- icons
+    -- Web Devicon Icons
     use({
       "nvim-tree/nvim-web-devicons",
       config = function()
         require("configs.ui.nvim-web-devicons")
       end,
     })
-    -- smooth scrolling
+    -- Enhance smooth scrolling
     use({
       "declancm/cinnamon.nvim",
       config = function()
@@ -132,6 +138,7 @@ return require("packer").startup({
       config = function()
         require("configs.ui.numbers")
       end
+    })
 
     -- ################################################
     -- # MOTIVATION
@@ -198,7 +205,7 @@ return require("packer").startup({
       requires = {
         "kyazdani42/nvim-web-devicons", -- optional, for file icons
       },
-      tag = "nightly", -- optional, updated every week. (see issue #1193)
+      tag = "nightly",                  -- optional, updated every week. (see issue #1193)
       config = function()
         require("configs.motivation.nvim-tree")
       end,
