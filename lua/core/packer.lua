@@ -126,6 +126,12 @@ return require("packer").startup({
         require("configs.ui.cinnamon")
       end,
     })
+    -- disable relative no when it doesn't make sense
+    use({
+      "nkakouros-original/numbers.nvim",
+      config = function()
+        require("configs.ui.numbers")
+      end
 
     -- ################################################
     -- # MOTIVATION
