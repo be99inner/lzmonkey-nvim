@@ -51,8 +51,9 @@ local on_attach = function(client, bufnr)
       end,
     })
   end
+end
 
-  -- If LuaLSP
+local settings = function(client,bufnr)
   if client.name ~= "lua_ls" then
     client.settings = {
       Lua = {
@@ -75,11 +76,18 @@ local on_attach = function(client, bufnr)
       },
     }
   end
+
+  if client.name ~= "yamlls" then
+    settings = {
+      keyOrdering = false,
+    }
+  end
 end
 
 for _, server in ipairs(servers) do
   lspconfig[server].setup({
     capabilities = capabilities,
     on_attach = on_attach,
+    settings = settings,
   })
 end
