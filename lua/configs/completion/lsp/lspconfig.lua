@@ -57,7 +57,7 @@ for _, server in ipairs(servers) do
   local settings = {}
 
   -- lua
-  if client.name ~= "lua_ls" then
+  if server ~= "lua_ls" then
     settings = {
       Lua = {
         runtime = {
