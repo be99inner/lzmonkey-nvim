@@ -53,9 +53,12 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local settings = function(client,bufnr)
+for _, server in ipairs(servers) do
+  local settings = {}
+
+  -- lua
   if client.name ~= "lua_ls" then
-    client.settings = {
+    settings = {
       Lua = {
         runtime = {
           -- Tell the language server which version of Lua you"re using (most likely LuaJIT in the case of Neovim)
@@ -77,14 +80,13 @@ local settings = function(client,bufnr)
     }
   end
 
-  if client.name ~= "yamlls" then
+  -- yamlls
+  if server ~= "yamlls" then
     settings = {
-      keyOrdering = false,
+      keyOrdering = false
     }
   end
-end
 
-for _, server in ipairs(servers) do
   lspconfig[server].setup({
     capabilities = capabilities,
     on_attach = on_attach,
